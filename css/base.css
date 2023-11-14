@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3e3e3f;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --header-height: 60px;
+}
+
+/* scroll bar */
+html::-webkit-scrollbar,
+.scrollbar::-webkit-scrollbar {
+	width: 8px;
+    background-color: #fff;
+}
+
+html::-webkit-scrollbar-thumb,
+.scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #5d5d61;
+}
+
+/* error */
+.error-phone {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    left: calc(30%);
+    top: 1px;
+    display: none;
+}
+
+.error.email,
+.error.password,
+.error.id {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Toast message */
+.toast {
+    position: fixed;
+    top: calc(var(--header-height) + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.toast-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    padding: 20px 0;
+    min-width: 300px;
+    max-width: 400px;
+    margin-bottom: 24px;
+    animation: slideDown ease 0.5s, fadeOut linear 1s 1s forwards;
+}
+
+.toast-message.success {
+    border-color: #47d864;
+}
+
+.toast-message.success .toast__icon {
+    color: #47d864;
+}
+
+.toast-message.fail {
+    border-color: #ee3158;
+}
+
+.toast-message.fail .toast__icon {
+    color: #ee3158;
+}
+
+.toast__body {
+    margin-right: 50px;
+}
+
+.toast__body h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.toast__body p {
+    font-size: 14px;
+}
+
+.toast__icon, 
+.toast__close {
+    padding: 0 16px;
+}
+
+.toast__icon i {
+    font-size: 24px;
+}
+
+.toast__close i {
+    cursor: pointer;
+    font-size: 20px;
+    color: #0000004d;
+}
+
+/* disabled btn */
+.disabled {
+    cursor: default;
+    color: #656060;
+}
+
+.disabled:hover {
+    color: #656060;
+}
+
+/* Close button */
+.close {
+    float: right;
+}
+
+.close-btn {
+    padding: 8px 12px;
+}
+
+.close:hover {
+    cursor: pointer;
+    background-color: #EE4D2D;
+    color: #fff;
+}
+
+/* status */ 
+.status {
+    font-size: 14px;
+    padding: 6px 8px;
+    color: #fff;
+    background-color: #ea2027;
+    border-radius: 3px;
+}
+
+.status.active {
+    background-color: #0be881;
+}
+
+/* empty */
+.empty {
+    text-align: center;
+    user-select: none;
+}
+
+.empty-noti {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 40px 0;
+}
+
+.empty-img {
+    width: 300px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes ModalfadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes toastSlideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }   
+}
+
+@keyframes chartGrowth {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+    to {
+        opacity: 1;
+        height: var(--percent-height);
+    }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-body {
+    z-index: 3;
+    margin: auto;
+}

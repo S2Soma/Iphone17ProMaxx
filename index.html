@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <title>HighTech</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+</head>
+
+<body>
+    <div id="main">
+        <!-- Header -->
+        <header class="header"> 
+            <div class="grid wide">
+                <div class="header__navbar">
+                    <a href="index.html" class="header__logo">
+                        <img src="./img/logo.png" class="header__logo-img" alt="">
+                    </a>
+                    
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <a href="index.html?iphone" class="header__navbar-item-link">iPhone</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="index.html?ipad" class="header__navbar-item-link">iPad</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="index.html?macbook" class="header__navbar-item-link">MacBook</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="index.html?apple-watch" class="header__navbar-item-link">AppleWatch</a>
+                        </li>
+                    </ul>
+    
+                    <div class="header__right-box">
+                        <div class="header__search" onclick="document.getElementById('search-bar').style.display='flex'">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <div class="header__cart" onclick="showCartPage()">
+                            <span class="header__cart-icon material-symbols-rounded">shopping_bag</span>
+                            <span class="header__cart-quantity"></span>
+                        </div>
+
+                        <div class="header__user-group">
+                            <div class="header__none-user" onclick="document.getElementById('account__modal').style.display='flex'">
+                                <i class="header__user-btn fa-solid fa-user"></i>
+                            </div>
+    
+                            <div class="header__user">
+                                <span class="header__user-name"></span>
+                                <div class="header__group-menu">
+                                    <a href="index.html?order" class="header__user-order" onclick="showOrderPage()">Đơn hàng của bạn</a>
+                                    <div id="log-out" class="header__log-out" onclick="LogOut()">Đăng xuất</div>
+                                </div>
+                            </div>
+    
+                            <div class="header__admin">
+                                <span>Admin</span>
+                                <div class="header__group-menu">
+                                    <div class="header__admin-interface" onclick="ToAdminPage()">Trang quản trị</div>
+                                    <a href="index.html?order" class="header__user-order" onclick="showOrderPage()">Đơn hàng của bạn</a>
+                                    <div id="log-out" class="header__log-out" onclick="LogOut()">Đăng xuất</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile & Tablet-->
+                        <div class="mobile__menu">
+                            <span class="mobile__menu-btn">
+                                <i class="fa-solid fa-bars"></i>
+                            </span>       
+                            
+                            <div class="mobile__list scrollbar">
+                                <span class="close">
+                                    <i class="close-btn fa-solid fa-xmark"></i>
+                                </span>
+
+                               <div class="mobile__header">
+                                    <img src="./img/logo.png" alt="" class="mobile__header-logo">
+                               </div>
+
+                               <div class="hello-user">
+                                    <span class="material-symbols-rounded">waving_hand</span>
+                                    <p></p>
+                               </div>
+
+                                <div class="mobile__box user-account">
+                                    <h3 class="mobile__box-header">TÀI KHOẢN</h3>
+                                    <ul class="header__navbar-list">
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">person</span>
+                                            <div id="mobile-sign-up" class="header__navbar-item-link">Đăng ký</div>
+                                        </li>
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">login</span>
+                                            <div id="mobile-sign-in" class="header__navbar-item-link">Đăng nhập</div>
+                                        </li>
+                                    </ul>
+                               </div>
+                               <div class="mobile__box user-info">
+                                    <h3 class="mobile__box-header">THÔNG TIN TÀI KHOẢN</h3>
+                                    <ul class="header__navbar-list">
+                                        <li class="header__navbar-item admin-interface">
+                                            <span class="material-symbols-rounded mobile-icon">settings</span>
+                                            <a href="admin.html" class="header__navbar-item-link">Trang quản trị</a>
+                                        </li>
+                                        <li class="header__navbar-item mobile-cart">
+                                            <span class="header__cart-icon material-symbols-rounded mobile-icon">shopping_bag</span>
+                                            <span class="header__cart-quantity mobile-cart-quantity"></span>
+                                            <a href="index.html?cart" class="header__navbar-item-link">Giỏ hàng của bạn</a>
+                                        </li>
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">assignment</span>
+                                            <a href="index.html?order" class="header__navbar-item-link">Đơn hàng của bạn</a>
+                                        </li>
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">logout</span>
+                                            <div id="log-out" class="header__navbar-item-link" onclick="LogOut()">Đăng xuất</div>
+                                        </li>
+                                    </ul>
+                               </div>
+                               <div class="mobile__box">
+                                    <h3 class="mobile__box-header">CATEGORIES</h3>
+                                    <ul class="header__navbar-list">
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">phone_android</span>
+                                            <a href="index.html?iphone" class="header__navbar-item-link">iPhone</a>
+                                        </li>
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">tablet_mac</span>
+                                            <a href="index.html?ipad" class="header__navbar-item-link">iPad</a>
+                                        </li>
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">laptop_mac</span>
+                                            <a href="index.html?macbook" class="header__navbar-item-link">MacBook</a>
+                                        </li>
+                                        <li class="header__navbar-item">
+                                            <span class="material-symbols-rounded mobile-icon">watch</span>
+                                            <a href="index.html?apple-watch" class="header__navbar-item-link">AppleWatch</a>
+                                        </li>
+                                    </ul>
+                                </div>                               
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-overlay"></div>
+                        <!--  -->
+                    </div>
+                    
+                    <div id="search-bar" class="header__searchbar">
+                        <div class="header__searcbar-container">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input id="search-info" type="text" class="header__search-input" placeholder="Nhập tên sản phẩm">
+                            <span onclick="document.getElementById('search-bar').style.display='none'" class="header__searchbar-close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Product -->
+        <div id="body" class="product">
+            <!-- Slider -->
+            <div class="slider">
+                <div class="slide__box">
+                    <img src="./img/slide/slide1.png" alt="" class="slide__img">
+                </div>
+                <div class="slide__box">
+                    <img src="./img/slide/slide2.png" alt="" class="slide__img">
+                </div>
+                <div class="slide__box">
+                    <img src="./img/slide/slide3.png" alt="" class="slide__img">
+                </div>
+                <div class="slide__box">
+                    <img src="./img/slide/silde4.png" alt="" class="slide__img">
+                </div>
+            </div>
+
+            <div class="grid wide">
+                <div class="product__header">
+                    <div class="product__logo">
+                        <i class="product__logo-icon fa-brands fa-apple"></i>
+                        <span class="product__logo-name"></span>
+                    </div>
+                </div>
+                
+                <!-- Product filter -->
+                <ul class="product__filter">
+                    
+                </ul>
+                
+                <!-- Product list -->
+                <div id="show-product" class="row">
+                   
+                </div>
+
+                <!-- Pagination -->
+                <div class="product__pagination">
+                    <div class="pagination-prev">
+                        <i class="pagination-prev__icon fa-solid fa-arrow-left"></i>
+                    </div>
+                    <div class="product__pagination-list">
+
+                    </div>
+                    <div class="pagination-next">
+                        <i class="pagination-next__icon fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product detail -->
+        <div class="product__detail">
+            <div class="grid wide">
+                <div id="show-product-detail" class="row">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart">
+            <div class="grid wide">
+                <div class="cart__wrapper">
+                    <div class="cart__header">
+                        <h3 class="cart__heading">Đơn đặt hàng</h3>
+                    </div>
+                    <div class="row cart-box">                    
+                        <div class="col l-4 m-12 c-12">
+                            <div class="cart__product">  
+                                <div class="cart__product-header">
+                                    <h3 class="cart__product__heading">Giỏ hàng của bạn</h3>
+                                </div>               
+                                <ul class="cart__product-list ">
+
+                                </ul>
+                                <div class="cart__product-total">
+                                    <h5 class="cart__product-total-text">Tổng tiền:</h5>
+                                    <h5 class="cart__product-total-price"></h5>
+                                </div>
+                            </div>        
+                        </div>   
+                        <div class="col l-8 m-12 c-12">
+                            <form class="cart__form" onsubmit="orderProduct(); return false">
+                                <div class="cart__form-select">
+                                    <h5 class="cart__form-header">Thông tin khách hàng</h5>
+                                    <div class="cart__form-select-box">
+                                        <input id="men" class="cart__form-select-input" type="radio" value="" name="sex" required>
+                                        <label for="men" class="cart__form-select-label">Anh</label>
+                                        <input id="women" class="cart__form-select-input" type="radio" value="" name="sex" required>
+                                        <label for="women" class="cart__form-select-label">Chị</label>
+                                    </div>
+                                </div>
+                
+                                <div class="cart__form-info">
+                                    <div class="cart__form-info-box">
+                                        <label for="fullname" class="cart__form-info-lable">Họ tên: *</label>
+                                        <input id="fullname" class="cart__form-info-input" type="text" placeholder="Nhập họ tên" required>
+                                    </div>
+                                    <div class="cart__form-info-box">
+                                        <label for="phone"class="cart__form-info-lable">Số điện thoại: *</label>
+                                        <input id="phone" class="cart__form-info-input" type="text" placeholder="Nhập số điện thoại" required>
+                                        <span class="error-phone">Số điện thoại phải có 10 chữ số</span>
+                                    </div>
+                                    <div class="cart__form-info-box">
+                                        <label for="address"class="cart__form-info-lable">Địa chỉ: *</label>
+                                        <input id="address" class="cart__form-info-input" type="text" placeholder="Nhập địa chỉ" required>
+                                    </div>
+                                </div>
+
+                                <div class="cart__form-select">
+                                    <h5 class="cart__form-header">Hình thức nhận hàng</h5>
+                                    <div class="cart__form-select-box">
+                                        <input id="home" class="cart__form-select-input" type="radio" value="" name="ship" required>
+                                        <label for="home" class="cart__form-select-label">Giao tận nơi</label>
+                                        <input id="shop" class="cart__form-select-input" type="radio" value="" name="ship" required>
+                                        <label for="shop" class="cart__form-select-label">Nhận tại cửa hàng</label>
+                                    </div>
+                                </div>
+
+                                <button class="cart__buy-btn" type="submit">Đặt hàng</button>
+                            </form> 
+                        </div>  
+                    </div>
+                </div>
+
+                <!-- Cart empty -->
+                <div class="empty cart__empty">
+                    <h3 class="empty-noti">Giỏ hàng của bạn chưa có sản phẩm nào!</h3>
+                    <img src="./img/cart-empty.png" alt="" class="empty-img">
+                    <div style="height: 200px"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order -->
+        <div class="order">
+            <div class="grid wide">
+                <div class="order__wrapper">
+                    <div class="oder__header">
+                        <h3 class="order__heading">Đơn hàng đã đặt</h3>
+                    </div>
+                    <div class="show-order">
+
+                    </div>
+                </div>
+
+                <!-- Order empty -->
+                <div class="empty order__empty">
+                    <h3 class="empty-noti">Bạn không có đơn hàng nào!</h3>
+                    <img src="./img/order-empty.png" alt="" class="empty-img" style="width: 200px;">
+                    <div style="height: 200px"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search empty -->
+        <div id="search__empty">
+            
+        </div>
+
+        <!-- Toast message -->
+        <div class="toast">
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-12 c-12">
+                        <div class="footer__logo">
+                            <img src="./img/logo.png" alt="" class="footer__logo-img">
+                        </div>
+                    </div>
+                    <div class="col l-4 c-12">
+                        <h3 class="footer__heading">LIÊN HỆ VỚI CHÚNG TÔI</h3>
+                        <ul class="footer__list">
+                            <li class="footer__item">
+                                Điện thoại:
+                                <a href="tel:0976124506" class="footer__item-link footer__phone">0976124506</a>
+                            </li>
+                            <li class="footer__item">
+                                Email:
+                                <a href="mailto:highhhhtech@gmail.com" class="footer__item-link footer__email">highhhhtech@gmail.com</a>
+                            </li>
+                            <li class="footer__item">
+                                Địa chỉ: 273 An Dương Vương, Quận 5, Hồ Chí Minh
+                            </li>    
+                        </ul>
+                    </div>
+                    <div class="col l-4 c-12">
+                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                        <ul class="footer__list">
+                            <li class="footer__item">
+                                <a href="" class="footer__item-link">
+                                    <i class="footer__item-icon fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__item-link">
+                                    <i class="footer__item-icon fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__item-link">
+                                    <i class="footer__item-icon fa-brands fa-tiktok"></i>
+                                    TikTok
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-4 c-12">
+                        <h3 class="footer__heading">CÔNG TY CỔ PHẦN HIGHTECH</h3>
+                        <ul class="footer__list">
+                            <li class="footer__item">Ngày thành lập: 18/10/2022</li>                           
+                            <li class="footer__item">HighTech đảm bảo uy tín và chất lượng những sản phẩm mang lại giá trị cho cộng đồng.</li>                   
+                        </ul>
+                    </div>
+                    <div class="col l-12 c-12">
+                        <p class="footer__copyright">© 2022 - Bản quyền thuộc về Công ty TNHH HighTech</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Account Modal -->
+        <div id="account__modal" class="modal" onclick="document.getElementById('account__modal').style.display='none'">
+            <div class="modal-overlay"></div>
+
+            <div class="modal-body">
+                <!-- Sign up -->
+                <div id="sign-up" class="account-form">
+                    <span onclick="document.getElementById('account__modal').style.display='none'" class="close">
+                        <i class="close-btn fa-solid fa-xmark"></i>
+                    </span>
+                    <form class="account-form__container" onsubmit="return createAccount()">
+                        <div class="account-form__header">
+                            <h3 class="account-form__heading">Đăng ký</h3>
+                        </div>
+
+                        <div class="account-form__form">
+                            <div class="account-form__box">
+                                <i class="account-form__box-icon uil uil-user"></i>
+                                <input id="user-name" type="text" class="account-form__input" placeholder="Tên người dùng" required>
+                            </div>
+
+                            <div class="account-form__box">
+                                <i class="account-form__box-icon uil uil-envelope"></i>
+                                <input id="email" type="email" class="account-form__input" placeholder="Email của bạn" required>
+                                <span class="error email"></span>
+                            </div>
+    
+                            <div class="account-form__box">
+                                <i class="account-form__box-icon uil uil-lock-alt"></i>
+                                <input id="true-password" type="password" class="account-form__input password" placeholder="Nhập mật khẩu" required>
+                            </div>
+
+                            <div class="account-form__box">
+                                <i class="account-form__box-icon uil uil-lock-alt"></i>
+                                <input id="re-password" type="password" class="account-form__input password" placeholder="Nhập lại mật khẩu" required>
+                                <span class="account-form__box-showpass sign-up-showpass" onclick="showPassword()">
+                                    <i class="uil uil-eye-slash show-hide"></i>
+                                </span>
+                                <span class="error password"></span>
+                            </div>
+                        </div>  
+
+                        <div class="account-form__policy">
+                            <input type="checkbox" name="" id="policy_check" required>
+                            <label for="policy_check" class="account-form__policy-lable">
+                                <p class="account-form__policy-text">
+                                    Tôi đồng ý với 
+                                    <strong class="account-form__policy-info">Điều khoản dịch vụ</strong>  
+                                    & 
+                                    <strong class="account-form__policy-info">Chính sách bảo mật</strong>
+                                </p>
+                            </label>
+                        </div>
+
+                        <button class="account-form__btn" type="submit">Đăng ký</button>
+
+                        <div class="account-form__switch">
+                            Bạn đã có tài khoản? 
+                            <span id="sign-in-btn" class="account-form__switch-btn" onclick="showSignIn()">Đăng nhập</span>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Sign in -->
+                <div id="sign-in" class="account-form">
+                    <span onclick="document.getElementById('account__modal').style.display='none'" class="close">
+                        <i class="close-btn close fa-solid fa-xmark"></i>
+                    </span>
+                    <form class="account-form__container" onsubmit="LogIn(); return false">
+                        <div class="account-form__header">
+                            <h3 class="account-form__heading">Đăng nhập</h3>
+                        </div>
+
+                        <div class="account-form__form">
+                            <div class="account-form__box">
+                                <i class="account-form__box-icon uil uil-envelope"></i>
+                                <input id="sign-in-email" type="email" class="account-form__input" placeholder="Email của bạn" required>
+                            </div>
+    
+                            <div class="account-form__box">
+                                <i class="account-form__box-icon uil uil-lock-alt"></i>
+                                <input id="sign-in-password" type="password" class="account-form__input" placeholder="Mật khẩu" required>
+                                <span class="account-form__box-showpass sign-in-showpass" onclick="showSignInPassword()">
+                                    <i class="uil uil-eye-slash show-hide"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <button class="account-form__btn">Đăng nhập</button>
+
+                        <div class="account-form__switch">
+                            Bạn chưa có tài khoản? 
+                            <span id="sign-up-btn" class="account-form__switch-btn" onclick="showSignUp()">Đăng ký</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/page.js"></script>
+    <script src="./js/product.js"></script>
+    <script src="./js/account.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/slider.js"></script>
+    <script src="./js/cart.js"></script>
+    <script>
+        window.onload = function() {
+            var url = window.location.href;
+            var s = url.split('?');
+            
+            if (s[2] == undefined) {
+                if (s[1] == 'order') {
+                    showOrderPage();
+                } else if (s[1] == 'cart') {
+                    showCartProduct();
+                } else if (s[1] == 'search') {
+                    showSearchProduct(1);
+                } else {
+                    showProduct(1);
+                }
+            } else {
+                showProductDetail();
+            }
+        }
+    </script>
+</body>
+
+</html>

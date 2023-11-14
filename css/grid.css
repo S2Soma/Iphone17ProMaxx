@@ -1,0 +1,151 @@
+.grid {
+    width: 100%;
+    display: block;
+}
+
+.grid.wide {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.col {
+    padding: 12px 10px;
+}
+
+.l-0 {
+    display: none;
+}
+
+.l-3 {
+    display: block;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.l-4 {
+    display: block;
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
+
+.l-6 {
+    display: block;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.l-8 {
+    display: block;
+    flex: 0 0 66.66667%;
+}
+
+.l-12 {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* low resolution PC */
+@media (min-width: 1024px) and (max-width: 1239px) {
+    .wide {
+        width: 984px;
+    }
+    
+    .wide .row {
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+
+    .wide .col {
+        padding: 12px 10px;
+    }
+
+    .wide .l-0 {
+        display: none;
+    }
+
+    .wide .l-3 {
+        display: block;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .wide.l-4 {
+        display: block;
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    
+    .wide.l-12 {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .wide {
+        width: 735px;
+    }
+
+    .row {
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+    
+    .col {
+        padding: 12px 8px;
+    }
+
+    .m-0 {
+        display: none;
+    }
+
+    .m-4 {
+        display: block;
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .m-12 {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+    .row {
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+    
+    .col {
+        padding: 8px 4px;
+    }
+
+    .c-0 {
+        display: none;
+    }
+    
+    .c-6 {
+        display: block;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .c-12 {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

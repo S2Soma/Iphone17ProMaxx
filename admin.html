@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <title>HighTech</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/logo-icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+</head>
+
+<body>
+    <div id="admin-main">
+        <!-- side bar -->
+        <div class="side-bar">
+            <a href="index.html" class="side-bar__logo">
+                <img src="./img/logo-black.png" alt="" class="side-bar__logo-img">
+            </a>
+
+            <div class="side-bar__user">
+                <img src="./img/admin.png" alt="" class="side-bar__user-img">
+                <span class="side-bar__user-icon">
+                    <span>Admin</span>
+                    <i class="fa-solid fa-caret-down"></i>
+                    <div class="side-bar__user-logout">
+                        <span class="material-symbols-rounded">logout</span>
+                        <p onclick="LogOut()">Đăng xuất</p>
+                    </div>
+                </span>
+            </div>
+
+            <ul class="side-bar__list">
+                <li class="side-bar__item" value="statistics" onclick="showStatisticsPage()">
+                    <i class="uil uil-chart-line"></i>
+                    Thống kê
+                </li>
+                <li class="side-bar__item" value="order" onclick="showAdminOrder(0)">
+                    <i class="uil uil-clipboard-notes"></i>
+                    Quản lý đơn hàng
+                </li>
+                <li class="side-bar__item" value="product" onclick="showAdminProduct(1)">
+                    <i class="uil uil-apple-alt"></i>
+                    Quản lý sản phẩm
+                </li>
+                <li class="side-bar__item" value="user" onclick="showUserPage()">
+                    <i class="uil uil-user-circle"></i>
+                    Quản lý khách hàng
+                </li>
+                <li class="side-bar__item" value="homepage" onclick="backHomePage()">
+                    <i class="uil uil-estate"></i>
+                    Trở về trang chủ
+                </li>
+            </ul>
+
+            <div class="side-bar__social">
+                <svg class="side-bar__social-icon" xmlns="http://www.w3.org/2000/svg" data-name="Ebene 1" viewBox="0 0 1024 1024"><path fill="#1877f2" d="M1024,512C1024,229.23016,794.76978,0,512,0S0,229.23016,0,512c0,255.554,187.231,467.37012,432,505.77777V660H302V512H432V399.2C432,270.87982,508.43854,200,625.38922,200,681.40765,200,740,210,740,210V336H675.43713C611.83508,336,592,375.46667,592,415.95728V512H734L711.3,660H592v357.77777C836.769,979.37012,1024,767.554,1024,512Z"/><path fill="#fff" d="M711.3,660,734,512H592V415.95728C592,375.46667,611.83508,336,675.43713,336H740V210s-58.59235-10-114.61078-10C508.43854,200,432,270.87982,432,399.2V512H302V660H432v357.77777a517.39619,517.39619,0,0,0,160,0V660Z"/></svg>
+                <svg class="side-bar__social-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="800" width="1200" viewBox="-19.5036 -32.49725 169.0312 194.9835"><defs><radialGradient fy="578.088" fx="158.429" gradientTransform="matrix(0 -1.98198 1.8439 0 -1031.399 454.004)" gradientUnits="userSpaceOnUse" xlink:href="#a" r="65" cy="578.088" cx="158.429" id="c"/><radialGradient fy="473.455" fx="147.694" gradientTransform="matrix(.17394 .86872 -3.5818 .71718 1648.351 -458.493)" gradientUnits="userSpaceOnUse" xlink:href="#b" r="65" cy="473.455" cx="147.694" id="d"/><linearGradient id="b"><stop stop-color="#3771c8" offset="0"/><stop offset=".128" stop-color="#3771c8"/><stop stop-opacity="0" stop-color="#60f" offset="1"/></linearGradient><linearGradient id="a"><stop stop-color="#fd5" offset="0"/><stop stop-color="#fd5" offset=".1"/><stop stop-color="#ff543e" offset=".5"/><stop stop-color="#c837ab" offset="1"/></linearGradient></defs><path d="M65.033 0C37.891 0 29.953.028 28.41.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468-4.125 4.282-6.625 9.55-7.53 15.812-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28a27.22 27.22 0 0017.75-14.53c1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624-4.3-4.108-9.56-6.608-15.829-7.512C102.338.157 101.733.027 86.193 0z" fill="url(#c)"/><path d="M65.033 0C37.891 0 29.953.028 28.41.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468-4.125 4.282-6.625 9.55-7.53 15.812-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28a27.22 27.22 0 0017.75-14.53c1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624-4.3-4.108-9.56-6.608-15.829-7.512C102.338.157 101.733.027 86.193 0z" fill="url(#d)"/><path d="M65.003 17c-13.036 0-14.672.057-19.792.29-5.11.234-8.598 1.043-11.65 2.23-3.157 1.226-5.835 2.866-8.503 5.535-2.67 2.668-4.31 5.346-5.54 8.502-1.19 3.053-2 6.542-2.23 11.65C17.06 50.327 17 51.964 17 65s.058 14.667.29 19.787c.235 5.11 1.044 8.598 2.23 11.65 1.227 3.157 2.867 5.835 5.536 8.503 2.667 2.67 5.345 4.314 8.5 5.54 3.054 1.187 6.543 1.996 11.652 2.23 5.12.233 6.755.29 19.79.29 13.037 0 14.668-.057 19.788-.29 5.11-.234 8.602-1.043 11.656-2.23 3.156-1.226 5.83-2.87 8.497-5.54 2.67-2.668 4.31-5.346 5.54-8.502 1.18-3.053 1.99-6.542 2.23-11.65.23-5.12.29-6.752.29-19.788 0-13.036-.06-14.672-.29-19.792-.24-5.11-1.05-8.598-2.23-11.65-1.23-3.157-2.87-5.835-5.54-8.503-2.67-2.67-5.34-4.31-8.5-5.535-3.06-1.187-6.55-1.996-11.66-2.23-5.12-.233-6.75-.29-19.79-.29zm-4.306 8.65c1.278-.002 2.704 0 4.306 0 12.816 0 14.335.046 19.396.276 4.68.214 7.22.996 8.912 1.653 2.24.87 3.837 1.91 5.516 3.59 1.68 1.68 2.72 3.28 3.592 5.52.657 1.69 1.44 4.23 1.653 8.91.23 5.06.28 6.58.28 19.39s-.05 14.33-.28 19.39c-.214 4.68-.996 7.22-1.653 8.91-.87 2.24-1.912 3.835-3.592 5.514-1.68 1.68-3.275 2.72-5.516 3.59-1.69.66-4.232 1.44-8.912 1.654-5.06.23-6.58.28-19.396.28-12.817 0-14.336-.05-19.396-.28-4.68-.216-7.22-.998-8.913-1.655-2.24-.87-3.84-1.91-5.52-3.59-1.68-1.68-2.72-3.276-3.592-5.517-.657-1.69-1.44-4.23-1.653-8.91-.23-5.06-.276-6.58-.276-19.398s.046-14.33.276-19.39c.214-4.68.996-7.22 1.653-8.912.87-2.24 1.912-3.84 3.592-5.52 1.68-1.68 3.28-2.72 5.52-3.592 1.692-.66 4.233-1.44 8.913-1.655 4.428-.2 6.144-.26 15.09-.27zm29.928 7.97a5.76 5.76 0 105.76 5.758c0-3.18-2.58-5.76-5.76-5.76zm-25.622 6.73c-13.613 0-24.65 11.037-24.65 24.65 0 13.613 11.037 24.645 24.65 24.645C78.616 89.645 89.65 78.613 89.65 65S78.615 40.35 65.002 40.35zm0 8.65c8.836 0 16 7.163 16 16 0 8.836-7.164 16-16 16-8.837 0-16-7.164-16-16 0-8.837 7.163-16 16-16z" fill="#fff"/></svg>
+                <svg class="side-bar__social-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                    <defs>
+                    </defs>
+                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                        <path d="M 36.203 35.438 v -3.51 c -1.218 -0.173 -2.447 -0.262 -3.677 -0.268 c -15.047 0 -27.289 12.244 -27.289 27.291 c 0 9.23 4.613 17.401 11.65 22.342 c -4.712 -5.039 -7.332 -11.681 -7.328 -18.58 C 9.559 47.88 21.453 35.784 36.203 35.438" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,242,234); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path d="M 36.847 75.175 c 6.714 0 12.19 -5.341 12.44 -11.997 l 0.023 -59.417 h 10.855 c -0.232 -1.241 -0.349 -2.5 -0.35 -3.762 H 44.989 l -0.025 59.419 c -0.247 6.654 -5.726 11.993 -12.438 11.993 c -2.015 0.001 -4 -0.49 -5.782 -1.431 C 29.079 73.238 32.839 75.171 36.847 75.175 M 80.441 23.93 v -3.302 c -3.989 0.004 -7.893 -1.157 -11.232 -3.339 c 2.928 3.371 6.869 5.701 11.234 6.641" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,242,234); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path d="M 69.209 17.286 c -3.272 -3.744 -5.075 -8.549 -5.073 -13.522 h -3.972 C 61.203 9.318 64.472 14.205 69.209 17.286 M 32.526 46.486 c -6.88 0.008 -12.455 5.583 -12.463 12.463 c 0.004 4.632 2.576 8.88 6.679 11.032 c -1.533 -2.114 -2.358 -4.657 -2.358 -7.268 c 0.007 -6.88 5.582 -12.457 12.463 -12.465 c 1.284 0 2.515 0.212 3.677 0.577 V 35.689 c -1.218 -0.173 -2.447 -0.262 -3.677 -0.268 c -0.216 0 -0.429 0.012 -0.643 0.016 v 11.626 C 35.014 46.685 33.774 46.49 32.526 46.486" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,0,79); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path d="M 80.441 23.93 v 11.523 c -7.689 0 -14.81 -2.459 -20.627 -6.633 v 30.13 c 0 15.047 -12.24 27.289 -27.287 27.289 c -5.815 0 -11.207 -1.835 -15.639 -4.947 c 5.151 5.555 12.384 8.711 19.959 8.709 c 15.047 0 27.289 -12.242 27.289 -27.287 v -30.13 c 6.009 4.321 13.226 6.642 20.627 6.633 V 24.387 c -1.484 0 -2.927 -0.161 -4.323 -0.46" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,0,79); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path d="M 59.813 58.949 v -30.13 c 6.009 4.322 13.226 6.642 20.627 6.633 V 23.93 c -4.364 -0.941 -8.305 -3.272 -11.232 -6.644 c -4.737 -3.081 -8.006 -7.968 -9.045 -13.522 H 49.309 l -0.023 59.417 c -0.249 6.654 -5.726 11.995 -12.44 11.995 c -4.007 -0.004 -7.768 -1.938 -10.102 -5.194 c -4.103 -2.151 -6.676 -6.399 -6.681 -11.032 c 0.008 -6.88 5.583 -12.455 12.463 -12.463 c 1.282 0 2.513 0.21 3.677 0.577 V 35.438 C 21.453 35.784 9.559 47.88 9.559 62.713 c 0 7.173 2.787 13.703 7.328 18.58 c 4.578 3.223 10.041 4.95 15.639 4.945 C 47.574 86.238 59.813 73.996 59.813 58.949" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="admin__content scrollbar"> 
+            <div class="admin__content-wrapper">
+                <div class="admin__content-header">
+                    <h3></h3>
+                </div>
+                
+                <!-- Statistics -->
+                <div class="admin__statis">
+                    <div class="admin__statis-sum">
+                        <div class="admin__statis-sum-box">
+                            <div class="admin__statis-sum-box-icon sum-order">
+                                <span class="material-symbols-rounded">inventory</span>
+                            </div>
+                            <div class="admin__statis-sum-box-info">
+                                <h3>Đơn hàng</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="admin__statis-sum-box">
+                            <div class="admin__statis-sum-box-icon sum-product">
+                                <i class="uil uil-apple"></i>
+                            </div>
+                            <div class="admin__statis-sum-box-info">
+                                <h3>Sản phẩm đã bán</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="admin__statis-sum-box">
+                            <div class="admin__statis-sum-box-icon total">
+                                <span class="material-symbols-rounded">currency_bitcoin</span>
+                            </div>
+                            <div class="admin__statis-sum-box-info">
+                                <h3>Doanh Thu</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin__statis-filter">
+                        <h3>Chọn loại sản phẩm:</h3>
+                        <select name="" id="" onchange="showChart(this.value)">
+                            <option value="all" selected>Tất cả</option>
+                            <option value="iphone">iPhone</option>
+                            <option value="ipad">iPad</option>
+                            <option value="macbook">MacBook</option>
+                            <option value="apple-watch">Apple Watch</option>
+                        </select>
+                    </div>
+
+                    <div class="admin__statis-chart-wrapper">
+                        <div class="admin__statis-chart-header">
+                            <h3>Biểu đồ thống kê</h3>
+                        </div>
+
+                        <div class="admin__statis-chart-note">
+                            <div class="admin__statis-chart-note-item">
+                                <div></div>
+                                :
+                                <p>Đơn hàng(%)</p>
+                            </div>
+                            <div class="admin__statis-chart-note-item">
+                                <div></div>
+                                :
+                                <p>Sản phẩm bán được(%)</p>
+                            </div>
+                            <div class="admin__statis-chart-note-item">
+                                <div></div>
+                                :
+                                <p>Doanh thu(%)</p>
+                            </div>       
+                        </div>
+
+                        <div class="admin__statis-chart">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product -->
+                <div class="admin__product">
+                    <div class="admin__product-control">
+                        <div class="admin__product-search">
+                            Tìm kiếm
+                            <input type="text" class="admin__product-search-input" placeholder="Nhập tên sản phẩm">
+                        </div>
+                        <div class="admin__product-add" onclick="showAddModal()">
+                            <i class="uil uil-plus-circle"></i>
+                            Thêm sản phẩm
+                        </div>
+                    </div>
+        
+                    <div class="admin__product-wrapper scrollbar">
+                        <table class="admin__product-list">
+                            <thead class="admin__product-list-header">
+                                <tr>
+                                    <th class="admin__product-list-header-item">Ảnh</th>
+                                    <th class="admin__product-list-header-item">ID</th>
+                                    <th class="admin__product-list-header-item">Tên sản phẩm</th>
+                                    <th class="admin__product-list-header-item">Loại sản phẩm</th>
+                                    <th class="admin__product-list-header-item">Chi tiết loại sản phẩm</th>
+                                    <th class="admin__product-list-header-item">Giá niêm yết</th>
+                                    <th class="admin__product-list-header-item">Giá bán</th>
+                                    <th class="admin__product-list-header-item">Thao tác</th>
+                                </tr>
+                            </thead>
+            
+                            <tbody class="admin__product-item">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="product__pagination">
+                        <div class="pagination-prev">
+                            <i class="pagination-prev__icon fa-solid fa-arrow-left"></i>
+                        </div>
+                        <div class="product__pagination-list">
+    
+                        </div>
+                        <div class="pagination-next">
+                            <i class="pagination-next__icon fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div> 
+                </div>
+                
+                <!-- Order -->
+                <div class="admin__order">
+                    <div class="admin__order-month">
+                        <h3>Khoảng thời gian:</h3>
+                        <select name="" class="month" onchange="showAdminOrder(this.value)">
+                            <script>
+                                document.write(`<option value="${0}" selected>Từ trước đến nay</option>`);
+                                for (var i = 1; i <= 12; i++) {
+                                    document.write(`<option value="${i}">Tháng ${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+    
+                    <div class="admin__order-wrapper">                        
+
+                    </div>
+                    
+                    <!-- Order empty -->
+                    <div class="empty admin__order-empty">
+                        <h3 class="empty-noti" style="font-size: 18px;">Không có đơn hàng nào!</h3>
+                        <img src="./img/order-empty.png" alt="" class="empty-img" style="width: 300px;">
+                    </div>
+                </div>
+                
+                <!-- User -->
+                <div class="admin__user">
+                    <div class="admin__user-wrapper">
+                        <div class="admin__user-left">
+                            <div class="admin__user-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" class="admin__user-search-input" placeholder="Nhập tên người dùng">
+                            </div>
+                            <div class="admin__user-account-list">
+
+                            </div>
+                        </div>
+
+                        <div class="admin__user-right">
+                            <div class="admin__user-header">
+                                <span>Tất cả tài khoản</span>
+                                <span class="all-account-quantity"></span>
+                            </div>
+                            <div class="admin__user-list">
+                                <div class="admin__user-item">
+                                    <span>Admin</span>
+                                    <span class="admin-account-quantity"></span>
+                                </div>
+                                <div class="admin__user-item">
+                                    <span>Người dùng</span>
+                                    <span class="user-account-quantity"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product control -->
+        <div id="product-control-modal" class="modal" onclick="document.getElementById('product-control-modal').style.display='none'">
+            <div class="modal-overlay"></div>
+
+            <div class="modal-body">
+                <!-- Add product -->
+                <div id="add-product" class="control-form">
+                    <span class="close" onclick="document.getElementById('product-control-modal').style.display='none'">
+                        <i class="close-btn fa-solid fa-xmark"></i>
+                    </span>
+                    <div class="control-form__container">
+                        <div class="control-form__heading">
+                            <h3>Thêm sản phẩm</h3>
+                        </div>
+                        <div class="control-form__upload">
+                            <button class="upload-img-btn" onclick="openFileBtnActive()">Upload ảnh</button>
+                            <input type="file" name="" id="open-file" hidden required>
+                            <div class="upload-box">
+                                <img src="" alt="" class="upload-img" id="product-img">
+                                <span class="close">
+                                    <i class="close-btn fa-solid fa-xmark"></i>
+                                </span>
+                                <div class="upload-box-content">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-form__form">
+                            <div class="control-form__form-box">
+                                <label for="product-id" class="control-form__form-lable">ID</label>
+                                <input id="product-id" type="text" class="control-form__form-input" placeholder="Nhập ID" required >
+                                <span class="error id"></span>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-name" class="control-form__form-lable">Tên sản phẩm</label>
+                                <input id="product-name" type="text" class="control-form__form-input" placeholder="Nhập tên" required>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-category" class="control-form__form-lable">Loại sản phẩm</label>
+                                <select name="" id="product-category">
+                                    <option value="iphone">iPhone</option>
+                                    <option value="ipad">iPad</option>
+                                    <option value="macbook">MacBook</option>
+                                    <option value="apple-watch">Apple Watch</option>
+                                </select>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-detail-category" class="control-form__form-lable">Chi tiết loại sản phẩm</label>
+                                <input id="product-detail-category" type="text" class="control-form__form-input" placeholder="Nhập chi tiết loại sản phẩm" required>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-old-price" class="control-form__form-lable">Giá niêm yết</label>
+                                <input id="product-old-price" type="number" class="control-form__form-input" placeholder="Nhập giá niêm yết" required>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-current-price" class="control-form__form-lable">Giá bán</label>
+                                <input id="product-current-price" type="number" class="control-form__form-input" placeholder="Nhập giá bán" required>
+                            </div>
+
+                            <button class="control-form___form-btn add" onclick="addProduct()">Thêm sản phẩm</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit product -->
+                <div id="edit-product" class="control-form">
+                    <span class="close" onclick="document.getElementById('product-control-modal').style.display='none'">
+                        <i class="close-btn fa-solid fa-xmark"></i>
+                    </span>
+                    <div class="control-form__container">
+                        <div class="control-form__heading">
+                            <h3>Sửa thông tin sản phẩm</h3>
+                        </div>
+                        <div class="control-form__upload">
+                            <button class="upload-img-btn" onclick="openEditFileBtnActive()">Upload ảnh</button>
+                            <input type="file" name="" id="open-file" hidden>
+                            <div class="edit upload-box">
+                                <img src="" alt="" class="upload-img" id="product-img">
+                                <span class="edit-close" onclick="deleteImg()">
+                                    <i class="close-btn fa-solid fa-xmark"></i>
+                                </span>
+                                <div class="upload-box-content">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="control-form__form" onsubmit="editProductInfo(); return false">
+                            <div class="control-form__form-box">
+                                <label for="product-id" class="control-form__form-lable">ID</label>
+                                <input id="product-id" type="text" class="control-form__form-input disable" placeholder="Nhập ID" readonly>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-name" class="control-form__form-lable">Tên sản phẩm</label>
+                                <input id="product-name" type="text" class="control-form__form-input" placeholder="Nhập tên" required>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-category" class="control-form__form-lable">Loại sản phẩm</label>
+                                <select name="" id="product-category">
+                                    <option value="iphone">iPhone</option>
+                                    <option value="ipad">iPad</option>
+                                    <option value="macbook">MacBook</option>
+                                    <option value="apple-watch">Apple Watch</option>
+                                </select>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-detail-category" class="control-form__form-lable">Chi tiết loại sản phẩm</label>
+                                <input id="product-detail-category" type="text" class="control-form__form-input" placeholder="Nhập chi tiết loại sản phẩm" required>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-old-price" class="control-form__form-lable">Giá niêm yết</label>
+                                <input id="product-old-price" type="number" class="control-form__form-input" placeholder="Nhập giá niêm yết" required>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="product-current-price" class="control-form__form-lable">Giá bán</label>
+                                <input id="product-current-price" type="number" class="control-form__form-input" placeholder="Nhập giá bán" required>
+                            </div>
+            
+                            <button class="control-form___form-btn" type="submit">Lưu chỉnh sửa</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Delete product -->
+                <div id="delete-product" class="control-form">
+                    <span class="close" onclick="document.getElementById('product-control-modal').style.display='none'">
+                        <i class="close-btn fa-solid fa-xmark"></i>
+                    </span>
+                    <div class="control-form__container">
+                        <div class="delete-form__logo">
+                            <i class="uil uil-trash-alt"></i>
+                        </div>
+                        <h3 class="delete-form__question"></h3>
+                        <div class="delete-form__control">
+                            <button class="delete-form__control-btn cancel" onclick="cacelDelete()">Hủy</button>
+                            <button class="delete-form__control-btn delete" onclick="deleteProduct()">Xóa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User control -->
+        <div id="user-control-modal" class="modal" onclick="document.getElementById('user-control-modal').style.display='none'">
+            <div class="modal-overlay"></div>
+
+            <div class="modal-body">
+                <!-- User info -->
+                <div id="user-info" class="control-form">
+                    <span class="close" onclick="document.getElementById('user-control-modal').style.display='none'">
+                        <i class="close-btn fa-solid fa-xmark"></i>
+                    </span>
+                    <div class="control-form__container">
+                        <div class="control-form__heading">
+                            <h3></h3>
+                        </div>
+                        <form class="control-form__form" onsubmit="EditInfo(); return false;">
+                            <div class="control-form__form-box">
+                                <label for="user-fullname" class="control-form__form-lable">Họ và tên</label>
+                                <input id="user-fullname" type="text" class="control-form__form-input disable" readonly>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="user-name" class="control-form__form-lable">Tên người dùng</label>
+                                <input id="user-name" type="text" class="control-form__form-input disable" readonly>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="user-email" class="control-form__form-lable">Email</label>
+                                <input id="user-email" type="email" class="control-form__form-input disable">
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="user-pass" class="control-form__form-lable">Mật khẩu</label>
+                                <input id="user-pass" type="text" class="control-form__form-input disable" readonly>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="user-address" class="control-form__form-lable">Địa chỉ</label>
+                                <input id="user-address" type="text" class="control-form__form-input disable" readonly>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="user-phone" class="control-form__form-lable">Số điện thoại</label>
+                                <input id="user-phone" type="text" class="control-form__form-input disable" readonly>
+                                <span class="error-phone">Số điện thoại phải có 10 chữ số</span>
+                            </div>
+                            <div class="control-form__form-box">
+                                <label for="user-type" class="control-form__form-lable">Chức vụ</label>
+                                <select name="" id="user-type" style="cursor: not-allowed;" disabled>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">Người dùng</option>
+                                </select>
+                            </div>
+                            <button class="control-form___form-btn" type="submit">Lưu chỉnh sửa</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Delete account -->
+                <div id="delete-account" class="control-form">
+                    <span class="close" onclick="document.getElementById('user-control-modal').style.display='none'">
+                        <i class="close-btn fa-solid fa-xmark"></i>
+                    </span>
+                    <div class="control-form__container">
+                        <div class="delete-form__logo">
+                            <i class="uil uil-trash-alt"></i>
+                        </div>
+                        <h3 class="delete-form__question"></h3>
+                        <div class="delete-form__control">
+                            <button class="delete-form__control-btn cancel" onclick="cacelDelete()">Hủy</button>
+                            <button class="delete-form__control-btn delete" onclick="deleteAccount()">Xóa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast message -->
+        <div class="toast">
+
+        </div>
+
+    </div>
+    
+    <!-- Not support on mobile&tablet -->
+    <div class="not-support">
+        <h3>Vui lòng đăng nhập trên máy tính để vào trang quản trị!</h3>
+    </div>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/page.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/product.js"></script>
+    <script src="./js/admin/admin.js"></script>
+    <script src="./js/admin/ad_statistics.js"></script>
+    <script src="./js/admin/admin_order.js"></script>
+    <script src="./js/admin/ad_product.js"></script>
+    <script src="./js/admin/ad_user.js"></script>
+</body>
+
+</html>
