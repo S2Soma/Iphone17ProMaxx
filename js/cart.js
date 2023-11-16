@@ -401,12 +401,18 @@ function orderProduct() {
         document.querySelector('.error-phone').style.display = 'block';
         return;
     }
+    else
+    {
+        document.querySelector('.error-name').style.display = 'none';
+    }
     if(!checkName()){
         document.querySelector('.error-name').style.display = 'block';
         return;
     }
-    document.querySelector('.error-phone').style.display = 'none';
-    document.querySelector('.error-name').style.display = 'none';
+    else
+    {
+        document.querySelector('.error-phone').style.display = 'none';
+    }
     userAccount[index].userFullName = fullName.value;
     userAccount[index].userPhone = phone.value;
     userAccount[index].userAddress = address.value;
