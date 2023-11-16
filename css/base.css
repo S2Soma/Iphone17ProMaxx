@@ -38,7 +38,7 @@ html::-webkit-scrollbar-thumb,
 }
 
 .error.email,
-.error.password,
+.error.password, .error.password1, 
 .error.id {
     color: red;
     font-size: 12px;
