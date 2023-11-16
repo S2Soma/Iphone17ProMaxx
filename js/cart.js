@@ -382,13 +382,12 @@ var phone = document.getElementById('phone');
 var address = document.getElementById('address');
 
 function checkPhone() {
-    if (parseInt(phone.value) && phone.value.length == 10) {
+    const regex = new RegExp(/^0[0-9]{9}$/);
+    if (regex.test(phone.value)) {
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
-
 // Đặt sản phẩm
 function orderProduct() {
     if (checkPhone()) {
