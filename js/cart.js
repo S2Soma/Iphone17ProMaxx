@@ -388,26 +388,38 @@ function checkPhone() {
     }
     return false;
 }
+function checkName() {
+    const regex = new RegExp(/[a-zỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ' A-ZZỲỌÁẦẢẤỜỄÀẠẰỆẾÝỘẬỐŨỨĨÕÚỮỊỖÌỀỂẨỚẶÒÙỒỢÃỤỦÍỸẮẪỰỈỎỪỶỞÓÉỬỴẲẸÈẼỔẴẺỠƠÔƯĂÊÂĐ']{2,50}$/);
+    if (regex.test(fullName.value)) {
+        return true;
+    }
+    return false;
+}
 // Đặt sản phẩm
 function orderProduct() {
-    if (checkPhone()) {
-        document.querySelector('.error-phone').style.display = 'none';
-
-        userAccount[index].userFullName = fullName.value;
-        userAccount[index].userPhone = phone.value;
-        userAccount[index].userAddress = address.value;
-
-        orderList.push({orderID: '', orderDate: today, orderStatus: 'not', userAccount: userAccount[index]});
-        localStorage.setItem('orderList', JSON.stringify(orderList));
-
-        userAccount[index].cartList = [];
-        localStorage.setItem('userAccount', JSON.stringify(userAccount));
-
-        alert('Đặt hàng thành công!');
-        window.location.href = 'index.html?order';
-    } else {
+    if (!checkPhone()) {
         document.querySelector('.error-phone').style.display = 'block';
+        return;
     }
+    if((!checkName())
+    {
+        document.querySelector('.error-name').style.display = 'block';
+        return;
+    }
+    document.querySelector('.error-phone').style.display = 'none';
+    document.querySelector('.error-name').style.display = 'none';
+    userAccount[index].userFullName = fullName.value;
+    userAccount[index].userPhone = phone.value;
+    userAccount[index].userAddress = address.value;
+
+    orderList.push({orderID: '', orderDate: today, orderStatus: 'not', userAccount: userAccount[index]});
+    localStorage.setItem('orderList', JSON.stringify(orderList));
+
+    userAccount[index].cartList = [];
+    localStorage.setItem('userAccount', JSON.stringify(userAccount));
+
+    alert('Đặt hàng thành công!');
+    window.location.href = 'index.html?order';
 }
 
 //show order product
