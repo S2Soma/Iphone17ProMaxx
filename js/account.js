@@ -65,6 +65,11 @@ function checkSameAccount(email) {
     }
     return false;
 }
+function checkPass(pass) {
+   if(pass.length <= 3) return 0;
+   if(pass.length > 20) return 1;
+    return 2;
+}
 
 function createAccount() {
     var rePassword = document.getElementById('re-password');
@@ -76,7 +81,16 @@ function createAccount() {
     } else {
         document.querySelector('.error.email').innerHTML = '';
     }
-
+    if(checkPass(password.value) == 0)
+    {
+         document.querySelector('.error.password1').innerHTML = 'Mật khẩu quá ngắn!';
+        return false;
+    }
+    if(checkPass(password.value) == 1)
+    {
+         document.querySelector('.error.password1').innerHTML = 'Mật khẩu quá dài!';
+        return false;
+    }
     if (rePassword.value != password.value) {
         document.querySelector('.error.password').innerHTML = 'Mật khẩu không trùng khớp!';
         return false;
