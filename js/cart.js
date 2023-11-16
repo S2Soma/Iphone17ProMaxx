@@ -401,7 +401,7 @@ function orderProduct() {
         document.querySelector('.error-phone').style.display = 'block';
         return;
     }
-    if((!checkName())
+    if(!checkName())
     {
         document.querySelector('.error-name').style.display = 'block';
         return;
