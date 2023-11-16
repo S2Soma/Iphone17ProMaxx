@@ -66,6 +66,7 @@ function checkSameAccount(email) {
     return false;
 }
 function checkPass(pass) {
+    console.log(pass.length);
    if(pass.length <= 3) return 0;
    if(pass.length > 20) return 1;
     return 2;
@@ -85,6 +86,10 @@ function createAccount() {
     {
          document.querySelector('.error.password1').innerHTML = 'Mật khẩu quá ngắn!';
         return false;
+    }
+    else
+    {
+        document.querySelector('.error.password1').innerHTML = '';
     }
     if(checkPass(password.value) == 1)
     {
