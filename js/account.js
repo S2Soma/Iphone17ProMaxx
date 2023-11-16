@@ -87,14 +87,15 @@ function createAccount() {
          document.querySelector('.error.password1').innerHTML = 'Mật khẩu quá ngắn!';
         return false;
     }
-    else
-    {
-        document.querySelector('.error.password1').innerHTML = '';
-    }
+    
     if(checkPass(password.value) == 1)
     {
          document.querySelector('.error.password1').innerHTML = 'Mật khẩu quá dài!';
         return false;
+    }
+    else
+    {
+        document.querySelector('.error.password1').innerHTML = '';
     }
     if (rePassword.value != password.value) {
         document.querySelector('.error.password').innerHTML = 'Mật khẩu không trùng khớp!';
