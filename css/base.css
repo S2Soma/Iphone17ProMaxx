@@ -28,7 +28,7 @@ html::-webkit-scrollbar-thumb,
 }
 
 /* error */
-.error-phone {
+.error-phone, .error-name {
     color: red;
     font-size: 12px;
     position: absolute;
