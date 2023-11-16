@@ -28,12 +28,20 @@ html::-webkit-scrollbar-thumb,
 }
 
 /* error */
-.error-phone, .error-name {
+.error-phone,{
     color: red;
     font-size: 12px;
     position: absolute;
     left: calc(30%);
     top: 1px;
+    display: none;
+}
+.error-name {
+	color: red;
+    font-size: 12px;
+    position: absolute;
+    left: calc(20%);
+    top: -5px;
     display: none;
 }
 
