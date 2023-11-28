@@ -50,6 +50,7 @@ if (!userAccount) {
     userAccount = [
         {cartList: [], userName: 'Admin', userEmail: 'admin@gmail.com', userPassword: 'admin', userFullName: 'Admin', userPhone: '0123456789', userAddress: 'Admin', userDate: '20/10/2022', type: 'admin'},
         {cartList: [], userName: 'Random', userEmail: 'random@gmail.com', userPassword: 'random', userFullName: 'Random', userPhone: '0123456789', userAddress: 'Random', userDate: '20/11/2022', type: 'user'},
+        {cartList: [], userName: 'UserDemo1', userEmail: 'demo@gmail.com', userPassword: 'demo', userFullName: 'Demo', userPhone: '0987654321', userAddress: 'HCM', userDate: '20/11/2022', type: 'user'},
     ];
 }
 
