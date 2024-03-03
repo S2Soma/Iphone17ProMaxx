@@ -2,10 +2,10 @@ var products = JSON.parse(localStorage.getItem('products'));
 if (!products) {
     products = [
         //iphone
-        {id: 'iphone001', category: 'iphone', name: 'iPhone 14 Pro Max 256GB', img: './img/product/iphone/iphone001.png', currentPrice: '36.990.000₫', oldPrice: '', detailCategory: 'iPhone 14', state: 'new'},
-        {id: 'iphone002', category: 'iphone', name: 'iPhone 14 Pro 128GB', img: './img/product/iphone/iphone002.png', currentPrice: '30.490.000₫', oldPrice: '30.990.000₫', detailCategory: 'iPhone 14', state: 'new'},
-        {id: 'iphone003', category: 'iphone', name: 'iPhone 14 Plus 128GB', img: './img/product/iphone/iphone003.png', currentPrice: '26.490.000₫', oldPrice: '27.990.000₫', detailCategory: 'iPhone 14', state: 'new'},
-        {id: 'iphone004', category: 'iphone', name: 'iPhone 14 128GB', img: './img/product/iphone/iphone004.png', currentPrice: '23.490.000₫', oldPrice: '24.990.000₫', detailCategory: 'iPhone 14', state: 'new'},
+        {id: 'iphone001', category: 'iphone', name: 'iPhone 14 Pro Max 256GB', img: './img/product/iphone/iphone001.png', currentPrice: '30.000₫', oldPrice: '', detailCategory: 'iPhone 14', state: 'new'},
+        {id: 'iphone002', category: 'iphone', name: 'iPhone 14 Pro 128GB', img: './img/product/iphone/iphone002.png', currentPrice: '30.000₫', oldPrice: '30.990.000₫', detailCategory: 'iPhone 14', state: 'new'},
+        {id: 'iphone003', category: 'iphone', name: 'iPhone 14 Plus 128GB', img: './img/product/iphone/iphone003.png', currentPrice: '30.000₫', oldPrice: '27.990.000₫', detailCategory: 'iPhone 14', state: 'new'},
+        {id: 'iphone004', category: 'iphone', name: 'iPhone 14 128GB', img: './img/product/iphone/iphone004.png', currentPrice: '30.000₫', oldPrice: '24.990.000₫', detailCategory: 'iPhone 14', state: 'new'},
         {id: 'iphone005', category: 'iphone', name: 'iPhone 13 Pro Max 256GB', img: './img/product/iphone/iphone005.png', currentPrice: '29.990.000₫', oldPrice: '36.990.000₫', detailCategory: 'iPhone 13', state: 'old'},
         {id: 'iphone006', category: 'iphone', name: 'iPhone 13 Pro 128GB', img: './img/product/iphone/iphone006.png', currentPrice: '24.990.000₫', oldPrice: '30.990.000₫', detailCategory: 'iPhone 13', state: 'old'},
         {id: 'iphone007', category: 'iphone', name: 'iPhone 13 128GB', img: './img/product/iphone/iphone007.png', currentPrice: '19.990.000₫', oldPrice: '24.990.000₫', detailCategory: 'iPhone 13', state: 'old'},
